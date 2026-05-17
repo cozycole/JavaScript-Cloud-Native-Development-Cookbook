@@ -2,7 +2,7 @@ service: cncb-cdn-json
 
 provider:
   name: aws
-  runtime: nodejs8.10
+  runtime: nodejs22.x
   endpointType: REGIONAL
   iamRoleStatements:
     - Effect: Allow

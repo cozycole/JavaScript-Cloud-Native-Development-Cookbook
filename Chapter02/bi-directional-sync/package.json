@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "aws-sdk": "^2.218.1",
-    "serverless": "1.26.0"
+    "serverless": "4.35.0"
   },
   "dependencies": {
     "highland": "^2.11.1",

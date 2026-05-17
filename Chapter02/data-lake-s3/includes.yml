@@ -16,9 +16,12 @@ ProcessingConfiguration:
 
 LogGroup: 
   Type: AWS::Logs::LogGroup
+  Properties:
+    LogGroupName: /aws/firehose/cncb-data-lake-s3-${opt:stage}
 
 LogStream: 
   Type: AWS::Logs::LogStream
+  DependsOn: LogGroup
   Properties: 
     LogGroupName:
       Ref: LogGroup

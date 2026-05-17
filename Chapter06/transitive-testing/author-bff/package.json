@@ -11,10 +11,10 @@
     "test": "better-npm-run test",
     "test:int": "npm start -- --exec \"mocha --timeout 5000 --require babel-register --recursive ./test/helper.js ./test/int/**/*.test.js\"",
     "start": "sls offline start --port 3001 --apiKey test-int-api-key-123456 -r us-east-1 -s stg --acct dev",
-    "dp:lcl": "sls deploy -v -r us-east-1 --acct dev",
+    "dp:lcl": "sls deploy -r us-east-1 --acct dev",
     "rm:lcl": "sls remove -r us-east-1 --acct dev",
-    "dp:stg:e": "sls deploy -v -r us-east-1 -s stg --acct dev",
-    "dp:prd:e": "sls deploy -v -r us-east-1 -s prd --acct prod"
+    "dp:stg:e": "sls deploy -r us-east-1 -s stg --acct dev",
+    "dp:prd:e": "sls deploy -r us-east-1 -s prd --acct prod"
   },
   "betterScripts": {
     "test": {

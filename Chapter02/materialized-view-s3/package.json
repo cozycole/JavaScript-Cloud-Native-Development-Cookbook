@@ -8,10 +8,10 @@
     "rm:lcl": "sls remove -r us-east-1"
   },
   "devDependencies": {
-    "aws-sdk": "^2.218.1",
-    "serverless": "1.26.0"
+    "serverless": "4.35.0"
   },
   "dependencies": {
+    "aws-sdk": "^2.218.1",
     "highland": "^2.11.1",
     "uuid": "^3.1.0"
   }

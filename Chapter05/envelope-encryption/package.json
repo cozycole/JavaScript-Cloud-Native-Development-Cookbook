@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "test": "sls package -r us-east-1 -s test",
-    "dp:lcl": "sls deploy -v -r us-east-1",
+    "dp:lcl": "sls deploy -r us-east-1",
     "rm:lcl": "sls remove -r us-east-1"
   },
   "dependencies": {
@@ -12,6 +12,6 @@
     "uuid": "^3.1.0"
   },
   "devDependencies": {
-    "serverless": "1.26.0"
+    "serverless": "4.35.0"
   }
 }

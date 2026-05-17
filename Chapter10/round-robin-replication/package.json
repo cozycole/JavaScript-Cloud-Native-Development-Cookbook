@@ -4,14 +4,14 @@
   "private": true,
   "scripts": {
     "test": "sls package -r us-east-1",
-    "dp:lcl:e": "sls deploy -v -r us-east-1",
-    "dp:lcl:w": "sls deploy -v -r us-west-2",
+    "dp:lcl:e": "sls deploy -r us-east-1",
+    "dp:lcl:w": "sls deploy -r us-west-2",
     "rm:lcl:e": "sls remove -v -r us-east-1",
     "rm:lcl:w": "sls remove -v -r us-west-2"
   },
   "devDependencies": {
     "aws-sdk": "^2.218.1",
-    "serverless": "1.26.0",
+    "serverless": "4.35.0",
     "serverless-pseudo-parameters": "^1.4.2"
   },
   "dependencies": {

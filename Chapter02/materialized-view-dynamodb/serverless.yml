@@ -2,7 +2,7 @@ service: cncb-materialized-view-dynamodb
 
 provider:
   name: aws
-  runtime: nodejs8.10
+  runtime: nodejs22.x
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -22,6 +22,7 @@ functions:
           type: kinesis
           arn: ${cf:cncb-event-stream-${opt:stage}.streamArn}
           batchSize: 100
+          maximumRetryAttempts: 3
           startingPosition: TRIM_HORIZON
   query:
     handler: handler.query

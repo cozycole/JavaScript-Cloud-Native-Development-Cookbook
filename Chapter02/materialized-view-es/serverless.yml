@@ -2,7 +2,7 @@ service: cncb-materialized-view-es
 
 provider:
   name: aws
-  runtime: nodejs8.10
+  runtime: nodejs22.x
   iamRoleStatements:
     - Effect: Allow
       Action:

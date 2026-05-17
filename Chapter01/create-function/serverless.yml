@@ -2,7 +2,7 @@ service: cncb-create-function
 
 provider:
   name: aws
-  runtime: nodejs8.10
+  runtime: nodejs22.x
   environment:
     V1: value1
 

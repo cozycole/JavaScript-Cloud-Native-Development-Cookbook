@@ -1,9 +1,11 @@
-const aws = require('aws-sdk');
-const _ = require('highland');
-const uuid = require('uuid');
+const aws = require("aws-sdk");
+const _ = require("highland");
+const uuid = require("uuid");
+
+const db = new aws.DynamoDB.DocumentClient();
 
 module.exports.listener = (event, context, cb) => {
-  console.log('event: %j', event);
+  console.log("event: %j", event);
 
   _(event.Records)
     .map(recordToEvent)
@@ -16,28 +18,27 @@ module.exports.listener = (event, context, cb) => {
     .toCallback(cb);
 };
 
-const recordToEvent = r => JSON.parse(Buffer.from(r.kinesis.data, 'base64'));
+const recordToEvent = (r) => JSON.parse(Buffer.from(r.kinesis.data, "base64"));
 
-const print = v => console.log('%j', v);
+const print = (v) => console.log("%j", v);
 
-const forThingCreated = e => e.type === 'thing-created';
+const forThingCreated = (e) => e.type === "thing-created";
 
-const toThing = event => ({
+const toThing = (event) => ({
   id: event.thing.new.id,
   name: event.thing.new.name,
   description: event.thing.new.description,
   asOf: event.timestamp,
 });
 
-const put = thing => {
+const put = (thing) => {
   const params = {
     TableName: process.env.TABLE_NAME,
     Item: thing,
   };
 
-  console.log('params: %j', params);
+  console.log("params: %j", params);
 
-  const db = new aws.DynamoDB.DocumentClient();
   return _(db.put(params).promise());
 };
 
@@ -49,8 +50,7 @@ module.exports.query = (id, context, callback) => {
     },
   };
 
-  console.log('params: %j', params);  
+  console.log("params: %j", params);
 
-  const db = new aws.DynamoDB.DocumentClient();
   db.get(params, callback);
 };

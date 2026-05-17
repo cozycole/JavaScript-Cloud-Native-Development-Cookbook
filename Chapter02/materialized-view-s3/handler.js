@@ -1,9 +1,11 @@
-const aws = require('aws-sdk');
-const _ = require('highland');
-const uuid = require('uuid');
+const aws = require("aws-sdk");
+const _ = require("highland");
+const uuid = require("uuid");
+
+const s3 = new aws.S3();
 
 module.exports.listener = (event, context, cb) => {
-  console.log('event: %j', event);
+  console.log("event: %j", event);
 
   _(event.Records)
     .map(recordToEvent)
@@ -16,31 +18,30 @@ module.exports.listener = (event, context, cb) => {
     .toCallback(cb);
 };
 
-const recordToEvent = r => JSON.parse(Buffer.from(r.kinesis.data, 'base64'));
+const recordToEvent = (r) => JSON.parse(Buffer.from(r.kinesis.data, "base64"));
 
-const print = v => console.log('%j', v);
+const print = (v) => console.log("%j", v);
 
-const forThingCreated = e => e.type === 'thing-created';
+const forThingCreated = (e) => e.type === "thing-created";
 
-const toThing = event => ({
+const toThing = (event) => ({
   id: event.thing.new.id,
   name: event.thing.new.name,
   description: event.thing.new.description,
   asOf: event.timestamp,
 });
 
-const put = thing => {
+const put = (thing) => {
   const params = {
     Bucket: process.env.BUCKET_NAME,
     Key: `things/${thing.id}`,
-    ACL: 'public-read',
-    ContentType: 'application/json',
-    CacheControl: 'max-age=300',
+    ACL: "public-read",
+    ContentType: "application/json",
+    CacheControl: "max-age=300",
     Body: JSON.stringify(thing),
   };
 
-  console.log('params: %j', params);
+  console.log("params: %j", params);
 
-  const s3 = new aws.S3();
   return _(s3.putObject(params).promise());
 };

@@ -2,7 +2,7 @@ service: cncb-db-first-dynamodb
 
 provider:
   name: aws
-  runtime: nodejs8.10
+  runtime: nodejs22.x
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -28,6 +28,7 @@ functions:
           arn:
             Fn::GetAtt: [ Table, StreamArn ]
           batchSize: 100
+          maximumRetryAttempts: 3
           startingPosition: TRIM_HORIZON
     environment:
       STREAM_NAME: ${cf:cncb-event-stream-${opt:stage}.streamName}

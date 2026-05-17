@@ -2,11 +2,11 @@ service: cncb-esg-outbound
 
 provider:
   name: aws
-  runtime: nodejs8.10
+  runtime: nodejs22.x
   environment:
-    REPO: enter-your-github-project
-    OWNER: enter-your-github-id
-    TOKEN: enter-your-github-token
+    REPO: JavaScript-Cloud-Native-Development-Cookbook
+    OWNER: cozycole
+    TOKEN: 
 
 functions:
   listener:

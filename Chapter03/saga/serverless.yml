@@ -2,7 +2,7 @@ service: cncb-saga
 
 provider:
   name: aws
-  runtime: nodejs8.10
+  runtime: nodejs22.x
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -41,6 +41,7 @@ functions:
           arn: ${cf:cncb-event-stream-${opt:stage}.streamArn}
           batchSize: 100
           startingPosition: TRIM_HORIZON
+          maximumRetryAttempts: 2
   query:
     handler: handler.query
 

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "test": "sls package -r 'East US' -s test",
-    "dp:lcl": "sls deploy -v -r 'East US'",
+    "dp:lcl": "sls deploy -r 'East US'",
     "rm:lcl": "sls remove -v -r 'East US'"
   },
   "devDependencies": {

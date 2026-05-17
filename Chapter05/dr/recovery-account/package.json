@@ -4,11 +4,11 @@
   "private": true,
   "scripts": {
     "test": "sls package -r us-west-1 -s test",
-    "dp:lcl": "sls deploy -v -r us-west-1",
+    "dp:lcl": "sls deploy -r us-west-1",
     "rm:lcl": "sls remove -r us-west-1"
   },
   "devDependencies": {
-    "serverless": "1.26.0",
+    "serverless": "4.35.0",
     "serverless-pseudo-parameters": "^1.6.0"
   }
 }

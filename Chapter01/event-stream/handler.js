@@ -1,20 +1,20 @@
-const aws = require('aws-sdk');
-const uuid = require('uuid');
+const aws = require("aws-sdk");
+const uuid = require("uuid");
 
 module.exports.publish = (event, context, callback) => {
-  console.log('event: %j', event);
-
+  console.log("event: %j", event);
+  const payload = typeof event === "string" ? JSON.parse(event) : event;
   const e = {
     id: uuid.v1(),
-    partitionKey: event.partitionKey || uuid.v4(),
+    partitionKey: payload.partitionKey || uuid.v4(),
     timestamp: Date.now(),
     tags: {
       region: process.env.AWS_REGION,
     },
-    ...event,
-  }
+    ...payload,
+  };
 
-  console.log('event: %j', e);
+  console.log("event: %j", e);
 
   const params = {
     StreamName: process.env.STREAM_NAME,
@@ -22,7 +22,7 @@ module.exports.publish = (event, context, callback) => {
     Data: Buffer.from(JSON.stringify(e)),
   };
 
-  console.log('params: %j', params);
+  console.log("params: %j", params);
 
   const kinesis = new aws.Kinesis();
 

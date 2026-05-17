@@ -2,7 +2,7 @@ service: cncb-micro-event-store
 
 provider:
   name: aws
-  runtime: nodejs8.10
+  runtime: nodejs22.x
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -21,6 +21,7 @@ functions:
       - stream:
           type: kinesis
           arn: ${cf:cncb-event-stream-${opt:stage}.streamArn}
+          maximumRetryAttempts: 3
           batchSize: 100
           startingPosition: TRIM_HORIZON
   trigger:

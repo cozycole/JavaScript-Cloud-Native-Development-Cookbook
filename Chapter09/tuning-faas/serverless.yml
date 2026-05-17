@@ -6,7 +6,7 @@ plugins:
 provider:
   name: aws
   # cfnRole: arn:aws:iam::${self:custom.accounts.${opt:acct}.accountNumber}:role/${opt:stage}-cfnRole
-  runtime: nodejs8.10
+  runtime: nodejs22.x
   endpointType: REGIONAL
   memorySize: 1024
   iamRoleStatements:

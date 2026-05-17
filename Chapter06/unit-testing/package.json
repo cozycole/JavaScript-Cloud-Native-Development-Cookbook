@@ -10,10 +10,10 @@
     "pretest": "npm run clean && npm run lint",
     "test": "better-npm-run test",
     "test:int": "echo running integration tests...",
-    "dp:lcl": "sls deploy -v -r us-east-1 --acct dev",
+    "dp:lcl": "sls deploy -r us-east-1 --acct dev",
     "rm:lcl": "sls remove -r us-east-1 --acct dev",
-    "dp:stg:e": "sls deploy -v -r us-east-1 -s stg --acct dev",
-    "dp:prd:e": "sls deploy -v -r us-east-1 -s prd --acct prod"
+    "dp:stg:e": "sls deploy -r us-east-1 -s stg --acct dev",
+    "dp:prd:e": "sls deploy -r us-east-1 -s prd --acct prod"
   },
   "betterScripts": {
     "test": {

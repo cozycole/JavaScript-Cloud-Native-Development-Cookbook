@@ -4,12 +4,12 @@
   "private": true,
   "scripts": {
     "test": "sls package -v -r us-east-1 -s test --account cncb",
-    "dp:lcl": "sls deploy -v -r us-east-1 --account cncb",
+    "dp:lcl": "sls deploy -r us-east-1 --account cncb",
     "rm:lcl": "sls remove -v -r us-east-1 --account cncb"
   },
   "devDependencies": {
     "aws-sdk": "^2.218.1",
-    "serverless": "1.26.0"
+    "serverless": "4.35.0"
   },
   "dependencies": {
     "bluebird": "^3.5.1",
